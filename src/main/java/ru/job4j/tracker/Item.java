@@ -11,9 +11,9 @@ public class Item {
         this.name = name;
     }
 
-    public Item(int id, String name) {
-        this.id = id;
+    public Item(String name, int id) {
         this.name = name;
+        this.id = id;
     }
 
     public int getId() {
