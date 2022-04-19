@@ -14,11 +14,10 @@ public class Tracker {
     }
 
     public boolean delete(int id) {
-        int startPos = indexOf(id) + 1;
-        int distPos = indexOf(id);
-        boolean rsl = indexOf(id) != -1;
+        int index = indexOf(id);
+        boolean rsl = index != -1;
         if (rsl) {
-            System.arraycopy(items, startPos, items, distPos, size - 1);
+            System.arraycopy(items, index + 1, items, index, size - index - 1);
             items[size - 1] = null;
             size--;
         }
