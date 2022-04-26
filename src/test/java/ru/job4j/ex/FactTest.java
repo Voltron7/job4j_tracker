@@ -7,9 +7,9 @@ import static org.junit.Assert.assertThat;
 
 public class FactTest {
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void whenN4ThenFact24() {
-        int rsl = Fact.calc(4);
+        int rsl = Fact.calc(-1);
         assertThat(rsl, is(24));
     }
 }
