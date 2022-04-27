@@ -92,10 +92,8 @@ public class StartUITest {
         String ln = System.lineSeparator();
         assertThat(out.toString(), is(
                 "Menu:" + ln
-                        + "0. Exit from app"
-                        + ln
-                        + "=== Exit from app ==="
-                        + ln
+                        + "0. Exit from app" + ln
+                        + "=== Exit from app ===" + ln
         ));
     }
 
