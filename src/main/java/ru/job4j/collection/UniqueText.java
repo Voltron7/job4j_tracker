@@ -11,9 +11,10 @@ public class UniqueText {
         for (String word : origin) {
             check.add(word);
         }
-        for (String duplicate: text) {
+        for (String duplicate : text) {
             if (!check.contains(duplicate)) {
                 rsl = false;
+                break;
             }
         }
         return rsl;
