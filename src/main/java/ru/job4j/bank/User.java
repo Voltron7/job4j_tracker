@@ -2,8 +2,24 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
+/**
+ * Модель данных пользователя
+ * @author Valeri Shpakowski
+ * @version 1.0
+ */
+
 public class User {
+
+    /**
+     * Номер паспорта пользователя
+     */
+
     private String passport;
+
+    /**
+     * Имя пользователя
+     */
+
     private String username;
 
     public User(String passport, String username) {
