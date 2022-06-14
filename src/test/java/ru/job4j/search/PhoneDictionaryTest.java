@@ -18,12 +18,12 @@ public class PhoneDictionaryTest {
     }
 
     @Test
-    public void whenIsEmpty() {
+    public void whenNotFound() {
         PhoneDictionary phones = new PhoneDictionary();
         phones.add(
                 new Person("Petr", "Arsentev", "534872", "Bryansk")
         );
-        ArrayList<Person> persons = phones.find("Stas");
+        ArrayList<Person> persons = phones.find("Valeri");
         assertTrue(persons.isEmpty());
     }
 }
