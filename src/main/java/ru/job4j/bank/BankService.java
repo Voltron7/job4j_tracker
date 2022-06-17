@@ -13,19 +13,16 @@ import java.util.Map;
  */
 
 public class BankService {
-
     /**
      * Поле хранит всех пользователей с привязанными к ним
      * аккаунтами в коллеции типа HashMap
      */
-
     private final Map<User, List<Account>> users = new HashMap<>();
 
     /**
      * Метод принимает на вход пользователя и добавляет его
      * @param user пользователь добавленный в систему
      */
-
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<Account>());
     }
@@ -36,7 +33,6 @@ public class BankService {
      * @param passport номер паспорта пользователя
      * @param account аккаунт пользователя
      */
-
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         if (user != null && !users.get(user).contains(account)) {
@@ -51,7 +47,6 @@ public class BankService {
      * с таким номером паспорта существует или null
      * если не существует
      */
-
     public User findByPassport(String passport) {
         return users.keySet()
                 .stream()
@@ -67,7 +62,6 @@ public class BankService {
      * @return возвращает аккаунт если аккаунт с такими
      * реквизитами существует или null если не существует
      */
-
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -96,7 +90,6 @@ public class BankService {
      * счет не существует либо не хватает средств на счете с
      * которого была осуществлена попытка перевода средств
      */
-
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
@@ -110,4 +103,3 @@ public class BankService {
         return rsl;
     }
 }
-
