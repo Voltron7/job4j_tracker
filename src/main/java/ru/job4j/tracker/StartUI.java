@@ -9,7 +9,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker, List<UserAction> userActions) {
+    public void init(Input input, Store tracker, List<UserAction> userActions) {
         boolean run = true;
         while (run) {
             this.showMenu(userActions);
@@ -30,10 +30,13 @@ public class StartUI {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Output output = new ConsoleOutput();
-        Input input = new ValidateInput(output, new ConsoleInput());
-        Tracker tracker = new Tracker();
+        Input input = new ValidateInput(output,
+                new ConsoleInput()
+        );
+        SqlTracker tracker = new SqlTracker();
+        tracker.init();
         List<UserAction> actions = List.of(
                 new CreateAction(output),
                 new ShowAllAction(output),
