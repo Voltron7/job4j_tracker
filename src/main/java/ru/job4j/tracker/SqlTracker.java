@@ -10,6 +10,13 @@ import static java.sql.Timestamp.valueOf;
 public class SqlTracker implements Store, AutoCloseable {
     private Connection cn;
 
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
+
+    public SqlTracker() {
+    }
+
     public void init() {
         try (InputStream in = SqlTracker.class.getClassLoader()
                 .getResourceAsStream("app.properties")) {
@@ -120,6 +127,7 @@ public class SqlTracker implements Store, AutoCloseable {
 
     @Override
     public Item findById(int id) {
+        Item item = new Item();
         try (PreparedStatement ps =
                      cn.prepareStatement(
                              "select * from items where id = ?")) {
