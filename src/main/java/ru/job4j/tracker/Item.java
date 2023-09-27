@@ -4,13 +4,18 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import lombok.*;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "items")
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Item implements Comparable<Item> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter
     @EqualsAndHashCode.Include
     private int id;
