@@ -65,33 +65,33 @@ public class HQLUsage {
     }
 
     public static boolean update(Session session, int id) {
-        int rsl = 0;
         try {
             session.beginTransaction();
-            rsl = session.createQuery(
+            session.createQuery(
                             "UPDATE Item SET name = :fName WHERE id = :fId")
                     .setParameter("fName", "new name")
                     .setParameter("fId", id)
                     .executeUpdate();
             session.getTransaction().commit();
+            return true;
         } catch (Exception e) {
             session.getTransaction().rollback();
         }
-        return rsl !=0;
+        return false;
     }
 
     public static boolean delete(Session session, int id) {
-        int rsl = 0;
         try {
             session.beginTransaction();
-            rsl = session.createQuery(
+            session.createQuery(
                             "DELETE Item WHERE id = :fId")
                     .setParameter("fId", id)
                     .executeUpdate();
             session.getTransaction().commit();
+            return true;
         } catch (Exception e) {
             session.getTransaction().rollback();
         }
-        return rsl !=0;
+        return false;
     }
 }
