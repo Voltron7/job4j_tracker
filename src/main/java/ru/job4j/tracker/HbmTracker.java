@@ -6,7 +6,6 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.query.Query;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,9 +37,8 @@ public class HbmTracker implements Store, AutoCloseable {
         try {
             session.beginTransaction();
             result = session.createQuery(
-                            "UPDATE Item SET name = :fName, created = :fCreated, WHERE id = :fId")
+                            "UPDATE Item SET name = :fName WHERE id = :fId")
                     .setParameter("fName", item.getName())
-                    .setParameter("fCreated", Timestamp.valueOf(item.getCreated()))
                     .setParameter("fId", id)
                     .executeUpdate();
             session.getTransaction().commit();
